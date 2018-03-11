@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service';
 
 
 @Component({
   selector: 'app-root',
-  template: `
-    <mat-toolbar>
-      <button mat-button routerLink="/"> Social </button>
-      <button mat-button routerLink="/users">Users</button>
-      <span style="flex: 1 1 auto"></span>
-      <button mat-button routerLink="/register">Register</button>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  `
+  templateUrl: 'app.component.html'
 })
-export class AppComponent {
-  title = 'my app';
+export class AppComponent implements OnInit{
+ 
+  constructor(private authServise: AuthService){} 
+  
+  ngOnInit(){}
+  
+  
+  
 }
+

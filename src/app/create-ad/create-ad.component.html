@@ -1,0 +1,29 @@
+
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>
+          <h4>Create new ad</h4>
+      </mat-card-title>
+  </mat-card-header>   
+  <mat-card-content>
+      <form>            
+          <mat-form-field>
+              <input matInput [(ngModel)]="ad.title" name="title" matInput placeholder="title" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <input matInput [(ngModel)]="ad.author" name="author" placeholder="author" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+              <input matInput [(ngModel)]="ad.created_at" name="created_at" placeholder="created_at" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field style="width: 50%">
+              <textarea matInput [(ngModel)]="ad.description" name="description" placeholder="description" required></textarea>
+          </mat-form-field>
+          <br>
+          <button (click)="post(this.ad)" mat-raised-button color="primary">Create ad</button>
+      </form>
+  </mat-card-content>
+</mat-card>
