@@ -1,9 +1,10 @@
 <mat-toolbar>
     <button mat-button routerLink="/"> AdS </button>
-    <button mat-button routerLink="/create_ad">Create Ad</button>
+    <button mat-button routerLink="/create_ad" *ngIf="authServise.isLogin">Create Ad</button>
     <span style="flex: 1 1 auto"></span>
-    <button mat-button routerLink="/register">Register</button>
-    <button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/" >Logout {{isLogged}}</button>
+    <div *ngIf="authServise.loggedUser">User: {{authServise.loggedUser}}</div>
+    <button mat-button routerLink="/register" *ngIf="!authServise.isLogin">Register</button>
+    <button mat-button routerLink="/login" *ngIf="!authServise.isLogin">Login</button>
+    <button mat-button routerLink="/" (click)="authServise.Logout()" *ngIf="authServise.isLogin">Logout</button>
   </mat-toolbar>
   <router-outlet></router-outlet>
