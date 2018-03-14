@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatButtonModule, MatToolbarModule, MatInputModule, MatListModule, MatCardModule} from '@angular/material'
+import { MatButtonModule, MatToolbarModule, MatInputModule, MatListModule, MatCardModule, MatTableModule} from '@angular/material'
 import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component'
@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { ApiService } from './api.service';
+import { MatPaginatorModule } from '@angular/material';
 //import { AdComponent } from './ad/ad.component';
 
 
@@ -43,6 +44,8 @@ const routes =  [
     MatListModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [AuthService, ApiService],
   bootstrap: [AppComponent] 

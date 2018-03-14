@@ -1,41 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../api.service';
 import { AuthService } from '../auth.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'ads',
   templateUrl: './ads.component.html',
   styleUrls: ['./ads.component.css']
 })
-export class AdsComponent implements OnInit {
-
-  // ads = [
-  //   {
-  //     title: "sell wegan",
-  //     description: "wanna sell one stupid wegan",
-  //     author: "meat eater",
-  //     created_at: "12.12.1234"
-  //   },
-  //   {
-  //     title: "free cows",
-  //     description: "wanna free all cows",
-  //     author: "wegan",
-  //     created_at: "13.12.1234"
-  //   },
-  //   {
-  //     title: "need rifle",
-  //     description: "wanna buy rifle to shoot idiots",
-  //     author: "misantrope",
-  //     created_at: "06.06.1234"
-  //   }
-  // ]
+export class AdsComponent{
 
   constructor( private apiService: ApiService, private authService: AuthService) { }
 
-    ads
-  ngOnInit() {
-    this.ads = this.apiService.storedAds
 
+  displayedColumns = ['title', 'author', 'created_at', 'description'];
+  dataSource = new MatTableDataSource<any>(this.apiService.storedAds);
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
 }
+
+
